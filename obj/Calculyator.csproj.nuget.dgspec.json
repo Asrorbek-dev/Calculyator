@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2025\\Desktop\\Calculyator\\Calculyator.csproj": {}
+    "C:\\Users\\2025\\Desktop\\Новая папка\\Calculyator\\Calculyator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2025\\Desktop\\Calculyator\\Calculyator.csproj": {
+    "C:\\Users\\2025\\Desktop\\Новая папка\\Calculyator\\Calculyator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2025\\Desktop\\Calculyator\\Calculyator.csproj",
+        "projectUniqueName": "C:\\Users\\2025\\Desktop\\Новая папка\\Calculyator\\Calculyator.csproj",
         "projectName": "Calculyator",
-        "projectPath": "C:\\Users\\2025\\Desktop\\Calculyator\\Calculyator.csproj",
+        "projectPath": "C:\\Users\\2025\\Desktop\\Новая папка\\Calculyator\\Calculyator.csproj",
         "packagesPath": "C:\\Users\\2025\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2025\\Desktop\\Calculyator\\obj\\",
+        "outputPath": "C:\\Users\\2025\\Desktop\\Новая папка\\Calculyator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\2025\\AppData\\Roaming\\NuGet\\NuGet.Config"
