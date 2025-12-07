@@ -66,6 +66,7 @@ class Program
     // Hisoblashni bajaruvchi metod
     static bool Calculate(double first, double second, string op, out double result)
     {
+        string name = "O'zgarishimni qabul qilasizmi";
         result = 0;
         switch (op)
         {
@@ -103,3 +104,5 @@ class Program
         }
     }
 }
+
+
