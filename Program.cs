@@ -1,105 +1,86 @@
-﻿using System;
+﻿// Cod yaxshi ishlandi
+using System;
 
 class Program
 {
     static void Main()
     {
-        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("===================================");
-        Console.WriteLine("         Oddiy Kalkulyator       ");
+        Console.WriteLine("         Oddiy Kalkulyator         ");
         Console.WriteLine("===================================");
-        Console.ResetColor();
 
         double firstNumber = ReadNumber("1-son: ");
-        string operation = ReadOperation("Amal: ");
-        double secondNumber = ReadNumber("2-son: ");
+        string operation = ReadOperation("Amal (+, -, *, /, %): ");
+        double secondNumber = ReadValidSecondNumber(operation, "2-son: ");
 
         double result;
         bool success = Calculate(firstNumber, secondNumber, operation, out result);
 
         if (success)
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("===================================");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Natija: {result}");
-            Console.ResetColor();
         }
         else
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Xato: Amal noto'g'ri kiritildi!");
-            Console.ResetColor();
+            Console.WriteLine("Xato: Amal noto‘g‘ri!");
         }
     }
 
-    // Son o'qish uchun metod
     static double ReadNumber(string prompt)
     {
-        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write(prompt);
-        Console.ResetColor();
 
         while (!double.TryParse(Console.ReadLine(), out double number))
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Iltimos, to'g'ri son kiriting!");
-            Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("❌ Xato: Iltimos, to‘g‘ri son kiriting!");
             Console.Write(prompt);
-            Console.ResetColor();
         }
         return number;
     }
 
-    // Amal o'qish uchun metod
     static string ReadOperation(string prompt)
     {
-        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write(prompt);
-        Console.ResetColor();
-        return Console.ReadLine();
+
+        string op = Console.ReadLine();
+
+        while (op != "+" && op != "-" && op != "*" && op != "/" && op != "%")
+        {
+            Console.WriteLine("❌ Xato: Faqat +, -, *, /, % amallaridan birini kiriting!");
+            Console.Write(prompt);
+            op = Console.ReadLine();
+        }
+        return op;
     }
 
-    // Hisoblashni bajaruvchi metod
+    // 2-sonni tekshirish (0 ga bo‘lishdan himoya)
+    static double ReadValidSecondNumber(string op, string prompt)
+    {
+        double number = ReadNumber(prompt);
+
+        while ((op == "/" || op == "%") && number == 0)
+        {
+            Console.WriteLine("❌ Xato: 0 ga bo‘lish mumkin emas! Boshqa son kiriting.");
+            number = ReadNumber(prompt);
+        }
+
+        return number;
+    }
+
+    // Hisoblash
     static bool Calculate(double first, double second, string op, out double result)
     {
         result = 0;
+
         switch (op)
         {
-            case "+":
-                result = first + second;
-                return true;
-            case "-":
-                result = first - second;
-                return true;
-            case "*":
-                result = first * second;
-                return true;
-            case "/":
-                if (second == 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Xato: Nolga bo‘lish mumkin emas!");
-                    Console.ResetColor();
-                    return false;
-                }
-                result = first / second;
-                return true;
-            case "%":
-                if (second == 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Xato: Nolga bo‘lish mumkin emas!");
-                    Console.ResetColor();
-                    return false;
-                }
-                result = first % second;
-                return true;
-            default:
-                return false;
+            case "+": result = first + second; return true;
+            case "-": result = first - second; return true;
+            case "*": result = first * second; return true;
+            case "/": result = first / second; return true;
+            case "%": result = first % second; return true;
         }
+        return false;
     }
 }
