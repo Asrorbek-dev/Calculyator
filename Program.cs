@@ -1,4 +1,5 @@
-﻿using System;
+﻿// Cod yaxshi ishlandi
+using System;
 
 class Program
 {
@@ -26,7 +27,6 @@ class Program
         }
     }
 
-    // Son o‘qish
     static double ReadNumber(string prompt)
     {
         Console.Write(prompt);
@@ -39,7 +39,6 @@ class Program
         return number;
     }
 
-    // Amalni to‘g‘ri kiritilganini tekshirish
     static string ReadOperation(string prompt)
     {
         Console.Write(prompt);
